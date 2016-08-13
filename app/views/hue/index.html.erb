@@ -1,2 +1,20 @@
-<h1>Hue#index</h1>
-<p>Find me in app/views/hue/index.html.erb</p>
+<h2>Philips Hue Control</h2>
+
+<form id="light-controls">
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="_method" value="put">
+  <label for="color">Color</label>
+  <select name="color" id="color-select"><option value="1">red bright</option>
+    <option value="2">red dimmed</option>
+    <option value="3">green bright</option>
+    <option value="4">green dimmed</option>
+    <option value="5">blue bright</option>
+    <option value="6">blue dimmed</option>
+  </select>
+
+  <label for="on">Turn light on</label>
+  <input type="hidden" name="on" id="on" value="false">
+  <input type="checkbox" name="on" id="on" value="true">
+
+  <input type="submit" name="commit" value="update light colors" data-disable-with="update light colors">
+</form>
