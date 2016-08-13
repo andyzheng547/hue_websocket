@@ -1,2 +1,12 @@
-<h1>Hue#index</h1>
-<p>Find me in app/views/hue/index.html.erb</p>
+<h2>Philips Hue Control</h2>
+
+<%= form_tag '/hue/1', method: :put, id: "light-controls", remote: true do %>
+  <%= label_tag "color" %>
+  <%= select_tag "color", options_for_select(color_select_options), id: "color-select"  %>
+
+  <%= label_tag "on", "Turn light on" %>
+  <%= hidden_field_tag "on", false %>
+  <%= check_box_tag "on", true, false %>
+
+  <%= submit_tag "update light colors" %>
+<% end %>
