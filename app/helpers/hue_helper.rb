@@ -117,7 +117,8 @@ module HueHelper
       on: payload["on"],
       hue: color_settings[:hue],
       bri: color_settings[:bri],
-      sat: color_settings[:sat]
+      sat: color_settings[:sat],
+      transitiontime: 0
     }
 
     resp = Faraday.put(url) do |request|
