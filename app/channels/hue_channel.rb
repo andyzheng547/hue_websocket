@@ -24,7 +24,8 @@ class HueChannel < ApplicationCable::Channel
         settings = {
           "on" => true,
           "hue_username" => payload["hue_username"],
-          "color" => party_settings[party_index]
+          "color" => party_settings[party_index],
+          "hue_ip" => payload["hue_ip"]
         }
         update_light(settings)
 
@@ -41,7 +42,8 @@ class HueChannel < ApplicationCable::Channel
       settings = {
         "on" => false,
         "hue_username" => payload["hue_username"],
-        "color" => party_settings[party_index]
+        "color" => party_settings[party_index],
+        "hue_ip" => payload["hue_ip"]
       }
 
       update_light(settings)

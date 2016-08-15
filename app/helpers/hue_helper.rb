@@ -1,14 +1,23 @@
 module HueHelper
-  # Gets the IP address of the Philips Hue bridge if it is connected to the same network
-  def hue_ip
-    url = 'https://www.meethue.com/api/nupnp'
-    resp = Faraday.get(url)
-    parsed_resp = JSON.parse(resp.body)[0]
 
-    parsed_resp['internalipaddress'] || false
+  def set_hue_ip
+    if !cookies[:hue_ip]
+      url = 'https://www.meethue.com/api/nupnp'
+      resp = Faraday.get(url)
+      parsed_resp = JSON.parse(resp.body)[0]
+
+      cookies[:hue_ip] = parsed_resp['internalipaddress']
+    end
+  end
+
+  def get_hue_ip
+    cookies[:hue_ip]
   end
 
   def hue_api_url
+    set_hue_ip
+    hue_ip = get_hue_ip
+
     if hue_ip
       "http://" + hue_ip + "/api"
     else
@@ -110,7 +119,13 @@ module HueHelper
   end
 
   def update_light(payload)
-    url = hue_api_url + "/" + payload["hue_username"] + "/lights/1/state"
+    puts !!payload["hue_ip"]
+    puts !!payload["hue_username"]
+
+    url = "http://" + payload["hue_ip"] + "/api/" + payload["hue_username"] + "/lights/1/state"
+
+    puts url
+
     color_settings = color_settings_from_id(payload["color"].to_i)
 
     data = {
