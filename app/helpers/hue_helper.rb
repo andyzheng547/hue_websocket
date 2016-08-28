@@ -119,12 +119,7 @@ module HueHelper
   end
 
   def update_light(payload)
-    puts !!payload["hue_ip"]
-    puts !!payload["hue_username"]
-
     url = "http://" + payload["hue_ip"] + "/api/" + payload["hue_username"] + "/lights/1/state"
-
-    puts url
 
     color_settings = color_settings_from_id(payload["color"].to_i)
 
