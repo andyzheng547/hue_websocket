@@ -11,6 +11,7 @@ The lightbulb's state can be changed to different colors and on state. The light
 # Setup
 
 1. Clone the repo
+
 ~~~
 git clone https://github.com/andyzheng547/hue_websocket.git
 ~~~
