@@ -10,15 +10,11 @@ The lightbulb's state can be changed to different colors and on state. The light
 
 # Setup
 
-1. Clone the repo
-
-~~~
-git clone https://github.com/andyzheng547/hue_websocket.git
-~~~
+1. Clone the repo `git clone https://github.com/andyzheng547/hue_websocket.git`
 
 2. Go into the folder and run `bundle install`
 
-3. Open the application with 'rails server' or 'rails s'
+3. Open the application with `rails server` or `rails s`
 
 4. Open up a browser and go to 'http://localhost:3000'
 
